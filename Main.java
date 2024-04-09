@@ -1,3 +1,5 @@
+//package com.example;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,6 +16,7 @@ public class Main extends Application {
         // Create buttons
         Button button1 = new Button("Patient Intake");
         Button button2 = new Button("CT Scan Tech View");
+        Button button4 = new Button("Doctor View");
         Button button3 = new Button("Patient View");
         
         // Create title
@@ -24,6 +27,7 @@ public class Main extends Application {
         button1.setStyle(buttonStyle);
         button2.setStyle(buttonStyle);
         button3.setStyle(buttonStyle);
+        button4.setStyle(buttonStyle);
         
         // Handle button click events
         button1.setOnAction(e -> {
@@ -38,6 +42,11 @@ public class Main extends Application {
             Login login = new Login();
             login.start(primaryStage);
         });
+        button4.setOnAction(e -> {
+            DocView doctor = new DocView();
+            doctor.start(primaryStage);
+        });
+        
         
         // Style label
         label1.setStyle("-fx-font-size: 16px;");
@@ -53,7 +62,7 @@ public class Main extends Application {
         vbox1.setAlignment(Pos.BOTTOM_CENTER);
         vbox1.setSpacing(20);
         vbox1.setPadding(new Insets(20));
-        vbox1.getChildren().addAll(button1, button2, button3);
+        vbox1.getChildren().addAll(button1, button2, button4, button3);
         
         // Creating root box
         VBox root = new VBox();
