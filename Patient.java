@@ -20,10 +20,10 @@ public class Patient extends Application {
     	Data dat = new Data();
     	String[] idHolder = dat.readDataFromIdFile();
     	String[] cacData = dat.readDataFromFile1(idHolder[0]);
-    	String[] patData = dat.readDataFromFile1(idHolder[0]);
+    	String[] docData = dat.readDataFromFile2(idHolder[0]);
     	
         // Create labels for technician information
-        Label hello = new Label("Patient: " + patData[1] + " " + patData[3]);
+        Label hello = new Label("Patient: " + cacData[1] + " " + cacData[3]);
         Label infoLabel = new Label("Patient Information");
 
         
@@ -31,17 +31,11 @@ public class Patient extends Application {
         String setLabelStyle = "-fx-border-color: black;\r\n"
         		+ "    -fx-border-width: 2px;\r\n"
         		+ "    -fx-padding: 5px;";
-        
-        // Create text fields for technician information
-        //TextField idField = new TextField();
-        Label cacField = new Label(cacData[1]);
-        cacField.setStyle(setLabelStyle);
-
 
         // Create labels for technician tasks
         //Label task0Label = new Label("Vessel level Agatston CAC score");\
-        Label vitalsLabel = new Label("Vitals");
-        Label historyLabel = new Label("History");
+        Label vitalsLabel = new Label("		--Vitals--");
+        Label historyLabel = new Label("				--History--");
         Label task1Label = new Label("Weight:");
         Label task2Label = new Label("Height:");
         Label task3Label = new Label("Blood Pressure:");
@@ -52,16 +46,22 @@ public class Patient extends Application {
         Label task8Label = new Label("Immunization history:");
 
         // Create text fields for technician tasks
-        Label task1Field = new Label(patData[3]);
+        Label task1Field = new Label(cacData[5]);
         task1Field.setStyle(setLabelStyle);
-        Label task2Field = new Label(patData[5]);
+        Label task2Field = new Label(cacData[7]);
         task2Field.setStyle(setLabelStyle);
-        Label task3Field = new Label(patData[7]);
+        Label task3Field = new Label(cacData[9]);
         task3Field.setStyle(setLabelStyle);
-        Label task4Field = new Label(patData[9]);
+        Label task4Field = new Label(cacData[11]);
         task4Field.setStyle(setLabelStyle);
-        Label task5Field = new Label(patData[11]);
+        Label task5Field = new Label(cacData[13]);
         task5Field.setStyle(setLabelStyle);
+        Label task6Field = new Label(docData[1]);
+        task6Field.setStyle(setLabelStyle);
+        Label task7Field = new Label(docData[3]);
+        task7Field.setStyle(setLabelStyle);
+        Label task8Field = new Label(docData[5]);
+        task8Field.setStyle(setLabelStyle);
         
         // Create button
         /*Button saveButton = new Button("Save");
@@ -84,15 +84,10 @@ public class Patient extends Application {
         technicianInfo1.setAlignment(Pos.TOP_CENTER);
         technicianInfo1.getChildren().addAll(infoLabel);
         
-        VBox technicianInfo2 = new VBox();
-        technicianInfo2.setSpacing(20);
-        technicianInfo2.setAlignment(Pos.TOP_RIGHT);
-        technicianInfo2.getChildren().addAll(cacField);
-        
         //create a HBox
         HBox technicianInfo = new HBox();
         technicianInfo.setSpacing(20);
-        technicianInfo.getChildren().addAll(technicianInfo1, technicianInfo2);
+        technicianInfo.getChildren().addAll(technicianInfo1);
 
 
         // Create a GridPane for Vitals
@@ -113,9 +108,9 @@ public class Patient extends Application {
         history.setVgap(10);
         //technicianTasks.addRow(0, task0Label);
         history.addRow(0, historyLabel);
-        history.addRow(1, task6Label);
-        history.addRow(2, task7Label);
-        history.addRow(3, task8Label);
+        history.addRow(1, task6Label, task6Field);
+        history.addRow(2, task7Label, task7Field);
+        history.addRow(3, task8Label, task8Field);
         
         //Create a Gridpane for Patient Information
         GridPane patientInfo = new GridPane();
@@ -148,10 +143,10 @@ public class Patient extends Application {
         root.getChildren().addAll(technicianInfo0, technicianInfo, patientInfo);
 
         // Create a scene with the VBox as the root node
-        Scene scene = new Scene(root, 800, 800);
+        Scene scene = new Scene(root, 800, 400);
 
         // Set the title of the window
-        primaryStage.setTitle("Technician Scene");
+        primaryStage.setTitle("Patient Portal");
 
         // Set the scene for the primary stage
         primaryStage.setScene(scene);

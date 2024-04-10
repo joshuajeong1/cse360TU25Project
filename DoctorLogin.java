@@ -3,22 +3,35 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Login extends Application {
+public class DoctorLogin extends Application {
 
     @Override
     public void start(Stage primaryStage) {
         // Create label for the title
-        Label titleLabel = new Label("Patient Login");
+        Label titleLabel = new Label("Doctor Login");
         titleLabel.setStyle("-fx-font-size: 18px;");
 
-        // Create label for ID
-        Label idLabel = new Label("ID:");
+        // Create label for username
+        Label usernameLabel = new Label("Username:");
 
-        // Create text field for entering ID
+        // Create text field for entering username
+        TextField usernameField = new TextField();
+
+        // Create label for password
+        Label passwordLabel = new Label("Password:");
+
+        // Create password field for entering password
+        PasswordField passwordField = new PasswordField();
+        
+        // Create label for password
+        Label idLabel = new Label("Patient ID:");
+
+        // Create password field for entering password
         TextField idField = new TextField();
 
         // Create login button
@@ -27,26 +40,31 @@ public class Login extends Application {
         loginButton.setStyle(buttonStyle);
         loginButton.setOnAction(event -> {
             // Here you can implement login functionality
-        	Data dat = new Data();
-        	dat.saveIdToFile(idField.getText());
-            Patient patient = new Patient();
-            patient.start(primaryStage);
+        	if (Data.readDataFromLoginFile(usernameField.getText(), passwordField.getText())) {
+        		Data dat = new Data();
+            	dat.saveIdToFile(idField.getText());
+            	DocView doctorView = new DocView();
+            	doctorView.start(primaryStage);
+        	} else {
+        		System.out.println("Incorrect username or password!");
+        	}
+        	
         });
 
         // Create a VBox layout to arrange elements vertically
         VBox root = new VBox(10);
         root.setPadding(new Insets(20));
         root.setSpacing(20);
-        root.getChildren().addAll(titleLabel, idLabel, idField, loginButton);
+        root.getChildren().addAll(titleLabel, usernameLabel, usernameField, passwordLabel, passwordField, idLabel, idField, loginButton);
 
         // Create a scene
-        Scene scene = new Scene(root, 500, 250);
+        Scene scene = new Scene(root, 300, 450);
 
         // Set the scene for the primary stage
         primaryStage.setScene(scene);
 
         // Set the title of the window
-        primaryStage.setTitle("Login Page");
+        primaryStage.setTitle("Doctor Login Page");
 
         // Display the primary stage
         primaryStage.show();

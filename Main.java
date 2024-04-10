@@ -14,10 +14,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
         // Create buttons
-        Button button1 = new Button("Patient Intake");
-        Button button2 = new Button("CT Scan Tech View");
-        Button button4 = new Button("Doctor View");
-        Button button3 = new Button("Patient View");
+        Button button1 = new Button("Intake Portal");
+        Button button4 = new Button("Doctor Portal");
+        Button button3 = new Button("Patient Portal");
         
         // Create title
         Label label1 = new Label("Welcome to Heart Health Imaging and Recording System");
@@ -25,25 +24,20 @@ public class Main extends Application {
         // Style buttons
         String buttonStyle = "-fx-background-color: #4775d1; -fx-text-fill: black; -fx-font-size: 16px; -fx-pref-width: 200px; -fx-pref-height: 50px;";
         button1.setStyle(buttonStyle);
-        button2.setStyle(buttonStyle);
         button3.setStyle(buttonStyle);
         button4.setStyle(buttonStyle);
         
         // Handle button click events
         button1.setOnAction(e -> {
-            Receptionist intake = new Receptionist();
+            Nurse intake = new Nurse();
             intake.start(primaryStage);
-        });
-        button2.setOnAction(e -> {
-            Technician tech = new Technician();
-            tech.start(primaryStage);
         });
         button3.setOnAction(e -> {
             Login login = new Login();
             login.start(primaryStage);
         });
         button4.setOnAction(e -> {
-            DocView doctor = new DocView();
+            DoctorLogin doctor = new DoctorLogin();
             doctor.start(primaryStage);
         });
         
@@ -62,7 +56,7 @@ public class Main extends Application {
         vbox1.setAlignment(Pos.BOTTOM_CENTER);
         vbox1.setSpacing(20);
         vbox1.setPadding(new Insets(20));
-        vbox1.getChildren().addAll(button1, button2, button4, button3);
+        vbox1.getChildren().addAll(button1, button4, button3);
         
         // Creating root box
         VBox root = new VBox();
