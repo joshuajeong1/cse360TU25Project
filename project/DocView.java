@@ -46,7 +46,7 @@ public class DocView extends Application {
 
         // Button to message protal
         String buttonStyle = "-fx-background-color: #4775d1; -fx-text-fill: black; -fx-font-size: 16px; -fx-pref-width: 200px; -fx-pref-height: 50px;";
-        Button messageButton = new Button("Message Doctor");
+        Button messageButton = new Button("Message Patient");
         messageButton.setStyle(buttonStyle);
         
         messageButton.setOnAction(e -> {
