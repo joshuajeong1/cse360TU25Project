@@ -1,3 +1,5 @@
+package project;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -43,7 +45,7 @@ public class DoctorLogin extends Application {
         	if (Data.readDataFromLoginFile(usernameField.getText(), passwordField.getText())) {
         		Data dat = new Data();
             	dat.saveIdToFile(idField.getText());
-            	DocView doctorView = new DocView();
+            	DocView doctorView = new DocView(usernameField.getText());
             	doctorView.start(primaryStage);
         	} else {
         		System.out.println("Incorrect username or password!");

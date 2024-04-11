@@ -1,3 +1,4 @@
+package project;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -26,6 +27,17 @@ public class Patient extends Application {
         Label hello = new Label("Patient: " + cacData[1] + " " + cacData[3]);
         Label infoLabel = new Label("Patient Information");
 
+        // Button label style and message button
+        String buttonStyle = "-fx-background-color: #4775d1; -fx-text-fill: black; -fx-font-size: 16px; -fx-pref-width: 300px; -fx-pref-height: 50px;";
+        Button messageButton = new Button("Message Doctor");
+        messageButton.setStyle(buttonStyle);
+        
+        messageButton.setOnAction(e -> {
+        	System.out.println("Button Pressed!");
+            Message message = new Message(idHolder[0], 1);
+            message.start(primaryStage);
+        	
+        });
         
         // Create label style
         String setLabelStyle = "-fx-border-color: black;\r\n"
@@ -84,11 +96,16 @@ public class Patient extends Application {
         technicianInfo1.setAlignment(Pos.TOP_CENTER);
         technicianInfo1.getChildren().addAll(infoLabel);
         
-        //create a HBox
+        // Create a HBox
         HBox technicianInfo = new HBox();
         technicianInfo.setSpacing(20);
         technicianInfo.getChildren().addAll(technicianInfo1);
-
+        
+        // Create a VBox
+        VBox buttonBox = new VBox();
+        buttonBox.setSpacing(20);
+        buttonBox.setAlignment(Pos.BOTTOM_RIGHT);
+        buttonBox.getChildren().addAll(messageButton);
 
         // Create a GridPane for Vitals
         GridPane vitals = new GridPane();
@@ -127,9 +144,6 @@ public class Patient extends Application {
         
         patientInfo.getColumnConstraints().addAll(column1, column2);
         
-        
-        
-        
         // Create an HBox for the button
         /*HBox buttonBox = new HBox();
         buttonBox.getChildren().add(saveButton);
@@ -140,7 +154,7 @@ public class Patient extends Application {
         VBox root = new VBox();
         root.setSpacing(20);
         root.setPadding(new Insets(20));
-        root.getChildren().addAll(technicianInfo0, technicianInfo, patientInfo);
+        root.getChildren().addAll(technicianInfo0, technicianInfo, patientInfo, buttonBox);
 
         // Create a scene with the VBox as the root node
         Scene scene = new Scene(root, 800, 400);

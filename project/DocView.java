@@ -1,5 +1,7 @@
+package project;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +14,10 @@ import javafx.stage.Stage;
 
 public class DocView extends Application {
 
+	private String username;
+	public DocView(String username) {
+		this.username = username;
+	}
     @Override
     public void start(Stage primaryStage) {
     	Data dat = new Data();
@@ -38,6 +44,18 @@ public class DocView extends Application {
         TextArea immunizationTextArea = new TextArea();
         immunizationTextArea.setPrefRowCount(5);
 
+        // Button to message protal
+        String buttonStyle = "-fx-background-color: #4775d1; -fx-text-fill: black; -fx-font-size: 16px; -fx-pref-width: 200px; -fx-pref-height: 50px;";
+        Button messageButton = new Button("Message Doctor");
+        messageButton.setStyle(buttonStyle);
+        
+        messageButton.setOnAction(e -> {
+        	System.out.println("Button Pressed!");
+            Message message = new Message(this.username, 0);
+            message.start(primaryStage);
+        	
+        });
+        
         medicationNotesPane.add(medicationLabel, 0, 0);
         medicationNotesPane.add(medicationTextArea, 0, 1);
         medicationNotesPane.add(doctorNotesLabel, 0, 2);
@@ -50,8 +68,8 @@ public class DocView extends Application {
         
         // Bottom Right: Save Button
         Button saveButton = new Button("Save");
-        String buttonStyle = "-fx-background-color: #4775d1; -fx-text-fill: black; -fx-font-size: 16px; -fx-pref-width: 100px; -fx-pref-height: 25px;";
-        saveButton.setStyle(buttonStyle);
+        String buttonStyle1 = "-fx-background-color: #4775d1; -fx-text-fill: black; -fx-font-size: 16px; -fx-pref-width: 200px; -fx-pref-height: 50px;";
+        saveButton.setStyle(buttonStyle1);
         saveButton.setOnAction(event -> {
             // Add your saving logic here
             TextArea[] textAreas = {medicationTextArea, doctorNotesTextArea, immunizationTextArea};
@@ -123,11 +141,19 @@ public class DocView extends Application {
         		task7Field,
         		task8Field);
 
+        // Create a VBox
+        VBox buttonBox = new VBox();
+        buttonBox.setSpacing(20);
+        buttonBox.setAlignment(Pos.BOTTOM_LEFT);
+        buttonBox.getChildren().addAll(saveButton ,messageButton);
+        
         root.setCenter(additionalInfoBox);
         
         root.setRight(additionalInfoBox0);
+        
+        root.setBottom(buttonBox);
 
-        Scene scene = new Scene(root, 900, 550);
+        Scene scene = new Scene(root, 900, 600);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Doctor Portal");
         primaryStage.show();
