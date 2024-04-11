@@ -13,22 +13,22 @@ public class Login extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        // Create label for the title
+        // Create the labels for the Patient Login
         Label titleLabel = new Label("Patient Login");
         titleLabel.setStyle("-fx-font-size: 18px;");
 
-        // Create label for ID
+        // Create the label for the ID input
         Label idLabel = new Label("ID:");
 
         // Create text field for entering ID
         TextField idField = new TextField();
 
-        // Create login button
+        // Create the login button function
         Button loginButton = new Button("Login");
         String buttonStyle = "-fx-background-color: #4775d1; -fx-text-fill: black; -fx-font-size: 16px; -fx-pref-width: 100px; -fx-pref-height: 25px;";
         loginButton.setStyle(buttonStyle);
         loginButton.setOnAction(event -> {
-            // Here you can implement login functionality
+            // Here we can implement login function's functionality
         	Data dat = new Data();
         	dat.saveIdToFile(idField.getText());
             Patient patient = new Patient();

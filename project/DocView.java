@@ -25,6 +25,7 @@ public class DocView extends Application {
     	String[] patData = dat.readDataFromFile1(idHolder[0]);
     	String[] docData = dat.readDataFromFile2(idHolder[0]);
     	
+    	// Setting up the borders for the Info Page
         BorderPane root = new BorderPane();
         root.setPadding(new Insets(10));
 
@@ -32,14 +33,17 @@ public class DocView extends Application {
         GridPane medicationNotesPane = new GridPane();
         medicationNotesPane.setVgap(10);
 
+        // Labels and Layout for the Medication provided
         Label medicationLabel = new Label("Medication:");
         TextArea medicationTextArea = new TextArea();
         medicationTextArea.setPrefRowCount(5);
 
+        // Labels and Layout for the Doctor's notes
         Label doctorNotesLabel = new Label("Doctor's Notes:");
         TextArea doctorNotesTextArea = new TextArea();
         doctorNotesTextArea.setPrefRowCount(5);
         
+        // Labels and layout for the immunization Record
         Label immunizationLabel = new Label("Immunization Record:");
         TextArea immunizationTextArea = new TextArea();
         immunizationTextArea.setPrefRowCount(5);
@@ -55,7 +59,7 @@ public class DocView extends Application {
             message.start(primaryStage);
         	
         });
-        
+        //Label Declarations
         medicationNotesPane.add(medicationLabel, 0, 0);
         medicationNotesPane.add(medicationTextArea, 0, 1);
         medicationNotesPane.add(doctorNotesLabel, 0, 2);
@@ -91,6 +95,7 @@ public class DocView extends Application {
         VBox additionalInfoBox = new VBox(40);
         additionalInfoBox.setPadding(new Insets(10));
         additionalInfoBox.setSpacing(25);
+        //Task Labels
         Label vitalsLabel = new Label("					--Vitals--");
         Label task1Label = new Label("Weight:");
         Label task2Label = new Label("Height:");

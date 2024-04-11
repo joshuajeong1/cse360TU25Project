@@ -37,6 +37,7 @@ public class Message extends Application {
 		this.type = type;
 		// 0 is doctor, 1 is patient
 		sender = id;
+		//if else condition for the doctorName & patientID
 		if(type == 0) {
 			doctorName = id;
 		}
@@ -48,6 +49,7 @@ public class Message extends Application {
 	
     @Override
     public void start(Stage primaryStage) {
+    	// the Vbox and Hbox labels for the Alignment and conversation button layout
         VBox mainWindow = new VBox(30);
         mainWindow.setAlignment(Pos.TOP_CENTER);
         mainWindow.setPadding(new Insets(20,0,0,0));
@@ -62,9 +64,10 @@ public class Message extends Application {
         newConversationContainer.getChildren().addAll(newConversation, startConversation);
         
         
-        
+        // Setting the layout sizes (width and boundaries)
         ComboBox<String> dropdown = new ComboBox<String>();
         dropdown.setMinWidth(250);
+        // If else condition for the Doctor and Patient ID
         if(type == 0) {
         	dropdown.getItems().addAll(getPatients(id));
         	
@@ -145,6 +148,7 @@ public class Message extends Application {
         primaryStage.show();
     }
 
+    // The class for handling the Message sending function 
     public void handleMessageSend(TextField message, ComboBox<String> dropdown, TextArea conversation) {
     	if(type == 0) {
     		patientID = dropdown.getValue();
@@ -180,6 +184,7 @@ public class Message extends Application {
             e.printStackTrace();
         }
     }
+    // Class for loading the conversation history
     public void loadConversation(String recipientID, TextArea conversation) {
     	String filename;
     	if (type == 0) {

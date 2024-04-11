@@ -18,16 +18,16 @@ public class Main extends Application {
         Button button4 = new Button("Doctor Portal");
         Button button3 = new Button("Patient Portal");
         
-        // Create title
+        // Setting the Main title to the Portal
         Label label1 = new Label("Welcome to Heart Health Imaging and Recording System");
 
-        // Style buttons
+        // Styling the buttons
         String buttonStyle = "-fx-background-color: #4775d1; -fx-text-fill: black; -fx-font-size: 16px; -fx-pref-width: 200px; -fx-pref-height: 50px;";
         button1.setStyle(buttonStyle);
         button3.setStyle(buttonStyle);
         button4.setStyle(buttonStyle);
         
-        // Handle button click events
+        // Handle the events of clicking each buttons
         button1.setOnAction(e -> {
             Nurse intake = new Nurse();
             intake.start(primaryStage);
