@@ -1,5 +1,7 @@
 package project;
 
+import javax.xml.crypto.Data;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -49,6 +51,10 @@ public class DoctorLogin extends Application {
             	doctorView.start(primaryStage);
         	} else {
         		System.out.println("Incorrect username or password!");
+                Alert error = new Alert(AlertType.ERROR);
+    			error.setTitle("Incorrect username or password!");
+    			error.setHeaderText("Incorrect username or password!");
+    			error.showAndWait();
         	}
         	
         });
