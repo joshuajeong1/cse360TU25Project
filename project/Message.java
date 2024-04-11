@@ -139,7 +139,7 @@ public class Message extends Application {
         primaryStage.setScene(scene);
 
         // Set the title of the window
-        primaryStage.setTitle("Login Page");
+        primaryStage.setTitle("Messaging Portal");
 
         // Display the primary stage
         primaryStage.show();

@@ -66,7 +66,7 @@ public class Main extends Application {
         Scene scene = new Scene(root, 500, 300);
 
         // Set the title of the window
-        primaryStage.setTitle("JavaFX Application");
+        primaryStage.setTitle("Heart Health Imaging");
 
         // Set the scene for the primary stage
         primaryStage.setScene(scene);
